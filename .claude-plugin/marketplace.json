@@ -1,0 +1,15 @@
+{
+  "name": "sancoca-skills",
+  "description": "Personal skills plugin for SanCoCa workflows",
+  "owner": {
+    "name": "hogers"
+  },
+  "plugins": [
+    {
+      "name": "sancoca-skills",
+      "description": "Custom skill overrides with Task-based tracking and dependency management",
+      "version": "1.0.0",
+      "source": "./"
+    }
+  ]
+}

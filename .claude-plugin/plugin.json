@@ -1,0 +1,10 @@
+{
+  "name": "sancoca-skills",
+  "description": "Custom skill overrides with Task-based tracking and dependency management",
+  "version": "1.0.0",
+  "author": {
+    "name": "hogers"
+  },
+  "repository": "https://github.com/SaintPepsi/sancoca-skills",
+  "license": "MIT"
+}
