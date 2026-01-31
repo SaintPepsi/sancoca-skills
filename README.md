@@ -4,13 +4,15 @@ Personal Claude Code plugin with custom skill overrides.
 
 ## Installation
 
-Add as a marketplace in Claude Code:
-
+1. Add the marketplace:
 ```
-/install-plugin sancoca-skills@sancoca-skills
+/plugin marketplace add SaintPepsi/sancoca-skills
 ```
 
-Or manually add the git URL as a marketplace source.
+2. Install the plugin:
+```
+/plugin install sancoca-skills@sancoca-skills
+```
 
 ## Skills
 
