@@ -21,7 +21,17 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 3. If concerns: Raise them with your human partner before starting
 4. If no concerns: Create tasks using TaskCreate (one per plan task, with description carrying full context and activeForm in present continuous). Wire dependencies using TaskUpdate `addBlockedBy` based on each task's **Depends on** line. Then proceed.
 
-### Step 2: Execute Batch
+### Step 2: Create Branch
+
+Before making any changes, create an isolated branch for this work:
+
+- Announce: "I'm using the using-git-worktrees skill to set up an isolated workspace."
+- **REQUIRED SUB-SKILL:** Use coca-wits:using-git-worktrees
+- Follow that skill to select directory, verify safety, create worktree, and confirm clean baseline
+
+**Do not proceed to execution until the branch is ready and tests pass.**
+
+### Step 3: Execute Batch
 **Default: First 3 unblocked tasks** (use TaskList to find tasks with empty `blockedBy`)
 
 For each task:
@@ -31,19 +41,19 @@ For each task:
 4. Run verifications as specified
 5. TaskUpdate status to `completed` (automatically unblocks dependent tasks)
 
-### Step 3: Report
+### Step 4: Report
 When batch complete:
 - Show what was implemented
 - Show verification output
 - Say: "Ready for feedback."
 
-### Step 4: Continue
+### Step 5: Continue
 Based on feedback:
 - Apply changes if needed
 - Execute next batch
 - Repeat until complete
 
-### Step 5: Complete Development
+### Step 6: Complete Development
 
 After all tasks complete and verified:
 - Announce: "I'm using the finishing-a-development-branch skill to complete this work."

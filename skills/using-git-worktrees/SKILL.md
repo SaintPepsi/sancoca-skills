@@ -211,7 +211,8 @@ Ready to implement auth feature
 **Called by:**
 - **brainstorming** (Phase 4) - REQUIRED when design is approved and implementation follows
 - **subagent-driven-development** - REQUIRED before executing any tasks
-- **executing-plans** - REQUIRED before executing any tasks
+- **executing-plans** (Step 2) - REQUIRED before executing any tasks
+- **proximity-audit** (Step 2) - REQUIRED before audit work begins
 - Any skill needing isolated workspace
 
 **Pairs with:**
