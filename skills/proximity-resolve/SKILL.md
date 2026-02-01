@@ -29,8 +29,9 @@ Default batch size: one principle's findings.
 
 For each finding:
 1. Mark task in-progress
-2. Read the file at the specified location
-3. Apply the fix based on violation type:
+2. Use `Read` to read the file at the specified location (never `cat`/`head`/`tail` via Bash)
+3. Apply the fix using `Edit` for existing files or `Write` for new files (never `sed`/`awk` via Bash)
+4. Fix based on violation type:
 
 | Principle | Fix action |
 |-----------|-----------|
@@ -45,7 +46,7 @@ For each finding:
 | Performance Annotations | Add performance annotation with benchmarks and tradeoffs |
 | Deprecation | Add deprecation notice with migration path and removal timeline |
 
-4. Mark task completed
+5. Mark task completed
 
 **Restructuring safety:** Behavior Over Structure and Temporal Proximity findings produce written proposals only. Never auto-apply file moves or directory restructuring. These require human decision.
 

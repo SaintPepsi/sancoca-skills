@@ -181,6 +181,7 @@ You MUST complete each phase before proceeding to the next.
    - ONE change at a time
    - No "while I'm here" improvements
    - No bundled refactoring
+   - **Use proper file tools:** `Edit` to modify files, `Write` to create files, `Read` to read files — never `sed`, `awk`, or `cat` via Bash
 
 3. **Verify Fix**
    - Test passes now?

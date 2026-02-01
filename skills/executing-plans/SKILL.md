@@ -38,8 +38,9 @@ For each task:
 1. TaskGet to read full description and verify `blockedBy` is empty
 2. TaskUpdate status to `in_progress` (triggers activeForm spinner)
 3. Follow each step exactly (plan has bite-sized steps)
-4. Run verifications as specified
-5. TaskUpdate status to `completed` (automatically unblocks dependent tasks)
+4. **Use proper file tools** (see File Tool Rules below)
+5. Run verifications as specified
+6. TaskUpdate status to `completed` (automatically unblocks dependent tasks)
 
 ### Step 4: Report
 When batch complete:
@@ -78,10 +79,25 @@ After all tasks complete and verified:
 
 **Don't force through blockers** - stop and ask.
 
+## File Tool Rules
+
+**NEVER use Bash for file operations.** Use dedicated tools:
+
+| Operation | Correct Tool | WRONG (never use) |
+|-----------|-------------|-------------------|
+| Read file | `Read` | `cat`, `head`, `tail`, `less` |
+| Edit existing file | `Edit` | `sed`, `awk`, `perl -pi` |
+| Create new file | `Write` | `echo >`, `cat <<EOF >`, `tee` |
+| Search file contents | `Grep` | `grep`, `rg` via Bash |
+| Find files by pattern | `Glob` | `find`, `ls` via Bash |
+
+**Reserve Bash exclusively for:** running tests, builds, git commands, and other actual system operations.
+
 ## Remember
 - Review plan critically first
 - Follow plan steps exactly
 - Don't skip verifications
+- Use proper file tools (Edit, Read, Write) — never sed/awk via Bash
 - Reference skills when plan says to
 - Between batches: just report and wait
 - Stop when blocked, don't guess
