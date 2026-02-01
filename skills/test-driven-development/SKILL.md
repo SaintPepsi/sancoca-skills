@@ -70,7 +70,7 @@ digraph tdd_cycle {
 
 ### RED - Write Failing Test
 
-Write one minimal test showing what should happen.
+Write one minimal test showing what should happen. **Use `Write` to create or `Edit` to modify test files.**
 
 <Good>
 ```typescript
@@ -129,7 +129,10 @@ Confirm:
 
 ### GREEN - Minimal Code
 
-Write simplest code to pass the test.
+Write simplest code to pass the test. **Use dedicated file tools:**
+- `Edit` to modify existing files
+- `Write` to create new files
+- `Read` to read files
 
 <Good>
 ```typescript

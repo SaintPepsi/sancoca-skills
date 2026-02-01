@@ -65,6 +65,14 @@ Way of thinking about problems (flatten-with-flags, test-invariants)
 ### Reference
 API docs, syntax guides, tool documentation
 
+## File Tool Rules
+
+When creating or editing skill files, **always use dedicated file tools:**
+- `Write` to create new SKILL.md files
+- `Edit` to modify existing skill files
+- `Read` to read skill files
+- Bash is exclusively for: git commands, running tests, and system operations
+
 ## Directory Structure
 
 ```
