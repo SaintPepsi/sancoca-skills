@@ -226,13 +226,13 @@ Done!
 **Subagents should use:**
 - **coca-wits:test-driven-development** - Subagents follow TDD for each task
 
-**Subagents MUST follow file tool rules:**
-- Use `Read` to read files (never `cat`, `head`, `tail`)
-- Use `Edit` to modify existing files (never `sed`, `awk`, `perl -pi`)
-- Use `Write` to create new files (never `echo >`, `cat <<EOF >`, `tee`)
-- Use `Grep` to search file contents (never `grep`/`rg` via Bash)
-- Use `Glob` to find files by pattern (never `find`/`ls` via Bash)
-- Reserve Bash exclusively for: tests, builds, git commands, and system operations
+**Subagents MUST use dedicated file tools:**
+- `Read` to read files
+- `Edit` to modify existing files
+- `Write` to create new files
+- `Grep` to search file contents
+- `Glob` to find files by pattern
+- Bash is exclusively for: tests, builds, git commands, and system operations
 
 **Alternative workflow:**
 - **coca-wits:executing-plans** - Use for parallel session instead of same-session execution

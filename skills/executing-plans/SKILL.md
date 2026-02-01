@@ -81,23 +81,23 @@ After all tasks complete and verified:
 
 ## File Tool Rules
 
-**NEVER use Bash for file operations.** Use dedicated tools:
+**All file operations MUST use dedicated tools:**
 
-| Operation | Correct Tool | WRONG (never use) |
-|-----------|-------------|-------------------|
-| Read file | `Read` | `cat`, `head`, `tail`, `less` |
-| Edit existing file | `Edit` | `sed`, `awk`, `perl -pi` |
-| Create new file | `Write` | `echo >`, `cat <<EOF >`, `tee` |
-| Search file contents | `Grep` | `grep`, `rg` via Bash |
-| Find files by pattern | `Glob` | `find`, `ls` via Bash |
+| Operation | Tool |
+|-----------|------|
+| Read file contents | `Read` |
+| Modify existing file | `Edit` |
+| Create new file | `Write` |
+| Search file contents | `Grep` |
+| Find files by pattern | `Glob` |
 
-**Reserve Bash exclusively for:** running tests, builds, git commands, and other actual system operations.
+Bash is exclusively for: running tests, builds, git commands, and system operations.
 
 ## Remember
 - Review plan critically first
 - Follow plan steps exactly
 - Don't skip verifications
-- Use proper file tools (Edit, Read, Write) — never sed/awk via Bash
+- All file operations use `Read`, `Edit`, `Write`, `Grep`, `Glob`
 - Reference skills when plan says to
 - Between batches: just report and wait
 - Stop when blocked, don't guess

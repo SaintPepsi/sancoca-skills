@@ -29,8 +29,8 @@ Default batch size: one principle's findings.
 
 For each finding:
 1. Mark task in-progress
-2. Use `Read` to read the file at the specified location (never `cat`/`head`/`tail` via Bash)
-3. Apply the fix using `Edit` for existing files or `Write` for new files (never `sed`/`awk` via Bash)
+2. Use `Read` to read the file at the specified location
+3. Apply the fix using `Edit` for existing files or `Write` for new files
 4. Fix based on violation type:
 
 | Principle | Fix action |
