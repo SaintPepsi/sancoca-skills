@@ -8,7 +8,7 @@
     {
       "name": "sancoca-skills",
       "description": "Custom skill overrides with Task-based tracking and dependency management",
-      "version": "1.3.0",
+      "version": "1.4.0",
       "source": "./"
     }
   ]
