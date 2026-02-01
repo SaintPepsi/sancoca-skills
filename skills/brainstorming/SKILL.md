@@ -40,8 +40,8 @@ Start by understanding the current project context, then ask questions one at a 
 
 **Implementation (if continuing):**
 - Ask: "Ready to set up for implementation?"
-- Use coca:using-git-worktrees to create isolated workspace
-- Use coca:writing-plans to create detailed implementation plan
+- Use coca-wits:using-git-worktrees to create isolated workspace
+- Use coca-wits:writing-plans to create detailed implementation plan
 
 ## Key Principles
 

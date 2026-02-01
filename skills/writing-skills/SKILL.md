@@ -13,7 +13,7 @@ You write test cases (pressure scenarios with subagents), watch them fail (basel
 
 **Core principle:** If you didn't watch an agent fail without the skill, you don't know if the skill teaches the right thing.
 
-**REQUIRED BACKGROUND:** You MUST understand coca:test-driven-development before using this skill. That skill defines the fundamental RED-GREEN-REFACTOR cycle. This skill adapts TDD to documentation.
+**REQUIRED BACKGROUND:** You MUST understand coca-wits:test-driven-development before using this skill. That skill defines the fundamental RED-GREEN-REFACTOR cycle. This skill adapts TDD to documentation.
 
 ## What is a Skill?
 
@@ -196,8 +196,8 @@ Always use subagents (50-100x context savings). REQUIRED: Use [other-skill-name]
 **When writing documentation that references other skills:**
 
 Use skill name only, with explicit requirement markers:
-- ✅ Good: `**REQUIRED SUB-SKILL:** Use coca:test-driven-development`
-- ✅ Good: `**REQUIRED BACKGROUND:** You MUST understand coca:systematic-debugging`
+- ✅ Good: `**REQUIRED SUB-SKILL:** Use coca-wits:test-driven-development`
+- ✅ Good: `**REQUIRED BACKGROUND:** You MUST understand coca-wits:systematic-debugging`
 - ❌ Bad: `See skills/testing/test-driven-development` (unclear if required)
 
 ## Flowchart Usage
