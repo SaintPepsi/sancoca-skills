@@ -38,4 +38,4 @@ Personal Claude Code plugin with custom skill overrides.
 ### Quality & Meta
 - **verification-before-completion** — Evidence-based verification before any completion claims
 - **writing-skills** — TDD-based approach to creating and testing new skills
-- **using-superpowers** — Skill discovery and invocation protocol for every conversation
+- **using-coca** — Skill discovery and invocation protocol for every conversation
