@@ -1,0 +1,68 @@
+name: Auto Version Bump
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  bump-minor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Bump minor version
+        run: |
+          # Skip if this is a version bump commit (avoid infinite loop)
+          LAST_MSG=$(git log -1 --pretty=%s)
+          if echo "$LAST_MSG" | grep -q '\[skip ci\]'; then
+            echo "Skipping version bump commit"
+            exit 0
+          fi
+
+          PLUGIN_JSON=".claude-plugin/plugin.json"
+          MARKETPLACE_JSON=".claude-plugin/marketplace.json"
+
+          # Extract current version from plugin.json (source of truth)
+          CURRENT_VERSION=$(grep -oP '"version": "\K[^"]+' "$PLUGIN_JSON")
+          if [ -z "$CURRENT_VERSION" ]; then
+            echo "Error: Could not extract version from $PLUGIN_JSON"
+            exit 1
+          fi
+          echo "Current version: $CURRENT_VERSION"
+
+          # Split version into parts
+          IFS='.' read -ra VERSION_PARTS <<< "$CURRENT_VERSION"
+          MAJOR=${VERSION_PARTS[0]}
+          MINOR=${VERSION_PARTS[1]}
+
+          # Increment minor, reset patch to 0
+          NEW_MINOR=$((MINOR + 1))
+          NEW_VERSION="$MAJOR.$NEW_MINOR.0"
+          echo "New version: $NEW_VERSION"
+
+          # Update plugin.json
+          sed -i "s/\"version\": \"$CURRENT_VERSION\"/\"version\": \"$NEW_VERSION\"/" "$PLUGIN_JSON"
+
+          # Update marketplace.json
+          sed -i "s/\"version\": \"$CURRENT_VERSION\"/\"version\": \"$NEW_VERSION\"/" "$MARKETPLACE_JSON"
+
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Commit and push to master
+        if: env.NEW_VERSION
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .claude-plugin/plugin.json .claude-plugin/marketplace.json
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: bump version to ${{ env.NEW_VERSION }} [skip ci]"
+          git push
