@@ -21,7 +21,17 @@ Ask the user:
 - Audit whole codebase, specific directory, or specific principles?
 - Default: whole codebase, all 10 principles
 
-### Step 2: Systematic Scan
+### Step 2: Create Branch
+
+Before making any changes, create an isolated branch for the audit work:
+
+- Announce: "I'm using the using-git-worktrees skill to set up an isolated workspace."
+- **REQUIRED SUB-SKILL:** Use coca-wits:using-git-worktrees
+- Follow that skill to select directory, verify safety, create worktree, and confirm clean baseline
+
+**Do not proceed to scanning until the branch is ready.**
+
+### Step 3: Systematic Scan
 
 Work through each principle using its detection strategy:
 
@@ -44,7 +54,7 @@ Work through each principle using its detection strategy:
 - Use directory listing for structural analysis (layer-based organization)
 - Read files to confirm violations before reporting (no false positives from grep alone)
 
-### Step 3: Produce Findings File
+### Step 4: Produce Findings File
 
 Save to `docs/audits/YYYY-MM-DD-proximity-audit.md`:
 
@@ -76,7 +86,7 @@ Save to `docs/audits/YYYY-MM-DD-proximity-audit.md`:
 - Order principles by finding count (most violations first)
 - Each finding belongs to exactly one principle — no "overlap" sections. Pick the most specific principle (e.g., Config Near Usage over Decision Archaeology when a constant is far from its consumer).
 
-### Step 4: Summary
+### Step 5: Summary
 
 Print finding counts by principle and total. Then offer:
 
@@ -87,3 +97,12 @@ Print finding counts by principle and total. Then offer:
 - **Ambiguous violations** — If unsure whether something is a real violation or intentional, flag it as "potential" in the findings and note the ambiguity.
 - **Massive codebase** — If the codebase is very large, propose auditing one module at a time rather than everything at once.
 - **No findings** — If a principle has no violations, skip it. If the entire audit finds nothing, say so honestly.
+
+## Integration
+
+**Uses:**
+- **using-git-worktrees** (Step 2) - REQUIRED to create isolated branch before audit work
+- **finishing-a-development-branch** - REQUIRED after audit is complete to handle the branch
+
+**Feeds into:**
+- **proximity-resolve** - Consumes the findings file produced by this skill
