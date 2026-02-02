@@ -1,6 +1,6 @@
 ---
 name: using-coca-wits
-description: Use when starting any conversation — establishes how to find and use skills via the Skill tool
+description: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions
 ---
 
 <EXTREMELY-IMPORTANT>
