@@ -35,7 +35,9 @@ Start by understanding the current project context, then ask questions one at a 
 ## After the Design
 
 **Documentation:**
-- Write the validated design to `docs/plans/YYYY-MM-DD-<topic>-design.md`
+- Determine the current branch name: `git branch --show-current`
+- Write the validated design to `docs/plans/<branch-name>/YYYY-MM-DD-<topic>-design.md`
+- This prevents overwriting reports from other branches — each branch gets its own folder
 - Commit the design document to git
 
 **Implementation (if continuing):**

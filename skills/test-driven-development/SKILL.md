@@ -327,6 +327,33 @@ PASS
 **REFACTOR**
 Extract validation for multiple fields if needed.
 
+## End-to-End Tests
+
+E2E tests MUST include screenshots of the features they exercise.
+
+**Why:** Screenshots provide visual proof that the UI renders correctly, catch visual regressions that assertions miss, and serve as living documentation of feature behavior.
+
+**How:**
+- After each significant user-facing action (page load, form submit, modal open, etc.), capture a screenshot
+- Name screenshots descriptively: `<feature>-<state>.png` (e.g., `login-form-error.png`, `dashboard-loaded.png`)
+- Store screenshots as test artifacts so they are available in CI output
+- Assertions alone are not sufficient for e2e tests — screenshots are mandatory
+
+**Example (Playwright):**
+```typescript
+test('user can complete checkout', async ({ page }) => {
+  await page.goto('/cart');
+  await expect(page.locator('.cart-items')).toBeVisible();
+  await page.screenshot({ path: 'screenshots/checkout-cart.png' });
+
+  await page.click('button.checkout');
+  await expect(page.locator('.confirmation')).toBeVisible();
+  await page.screenshot({ path: 'screenshots/checkout-confirmation.png' });
+});
+```
+
+**Red flag:** An e2e test with zero screenshots is incomplete. Add them.
+
 ## Verification Checklist
 
 Before marking work complete:
@@ -339,6 +366,7 @@ Before marking work complete:
 - [ ] Output pristine (no errors, warnings)
 - [ ] Tests use real code (mocks only if unavoidable)
 - [ ] Edge cases and errors covered
+- [ ] E2E tests include screenshots of features exercised
 
 Can't check all boxes? You skipped TDD. Start over.
 
