@@ -56,7 +56,9 @@ Work through each principle using its detection strategy:
 
 ### Step 4: Produce Findings File
 
-Save to `docs/audits/YYYY-MM-DD-proximity-audit.md`:
+Determine the current branch name with `git branch --show-current`.
+
+Save to `docs/audits/<branch-name>/YYYY-MM-DD-proximity-audit.md`:
 
 ```markdown
 # Proximity Audit — YYYY-MM-DD

@@ -327,6 +327,35 @@ PASS
 **REFACTOR**
 Extract validation for multiple fields if needed.
 
+## End-to-End Tests
+
+E2E tests MUST include visual comparison screenshots for the features they exercise.
+
+**Why:** Comparison screenshots catch visual regressions that assertions miss — layout shifts, style breakage, missing elements, z-index issues. A baseline screenshot is stored in version control, and each test run compares the current render against it. Any pixel difference fails the test.
+
+**How:**
+- Use `toHaveScreenshot()` (Playwright) or equivalent visual comparison API — not plain `page.screenshot()`
+- Capture a comparison screenshot after each significant user-facing state (page load, form submit, modal open, etc.)
+- Name snapshots descriptively: `<feature>-<state>.png` (e.g., `login-form-error.png`, `dashboard-loaded.png`)
+- Baseline images live in version control (e.g., `tests/__screenshots__/`) so diffs show up in PRs
+- On first run, the test generates the baseline. Subsequent runs compare against it.
+- When a visual change is intentional, update the baseline with `--update-snapshots` and commit the new image
+
+**Example (Playwright):**
+```typescript
+test('user can complete checkout', async ({ page }) => {
+  await page.goto('/cart');
+  await expect(page.locator('.cart-items')).toBeVisible();
+  await expect(page).toHaveScreenshot('checkout-cart.png');
+
+  await page.click('button.checkout');
+  await expect(page.locator('.confirmation')).toBeVisible();
+  await expect(page).toHaveScreenshot('checkout-confirmation.png');
+});
+```
+
+**Red flag:** An e2e test using plain `page.screenshot()` instead of comparison screenshots is incomplete. Use `toHaveScreenshot()` or equivalent.
+
 ## Verification Checklist
 
 Before marking work complete:
@@ -339,6 +368,7 @@ Before marking work complete:
 - [ ] Output pristine (no errors, warnings)
 - [ ] Tests use real code (mocks only if unavoidable)
 - [ ] Edge cases and errors covered
+- [ ] E2E tests include comparison screenshots of features exercised
 
 Can't check all boxes? You skipped TDD. Start over.
 
